@@ -1,0 +1,73 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap");
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    color: #172033;
+    background: #f7f8fb;
+    font-family:
+      Poppins, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+      "Segoe UI", sans-serif;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    min-width: 320px;
+    margin: 0;
+    background:
+      linear-gradient(180deg, rgba(240, 192, 0, 0.06), transparent 360px),
+      #f7f8fb;
+  }
+
+  button,
+  input,
+  textarea {
+    font: inherit;
+  }
+
+  strong,
+  b,
+  dt,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: 400;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  ::selection {
+    background: rgba(240, 192, 0, 0.35);
+  }
+}
+
+/* For the 3D perspective */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+/* Custom utility for translate-z */
+.translate-z-10 {
+  transform: translateZ(10px);
+}
+
+/* Hover state for translate-z */
+.group-hover\:translate-z-10 {
+  transform: translateZ(10px);
+}
