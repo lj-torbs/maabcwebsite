@@ -2,12 +2,11 @@ import Icon, { type IconName } from '../components/Icon'
 import SectionHeader from '../components/SectionHeader'
 import { contactDetails } from '../data/schoolContent'
 
-const contactIcons: Record<string, IconName> = {
-  location: 'mapPin',
-  phone: 'phone',
-  email: 'mail',
-  hours: 'clock',
-}
+const contactRows: { label: string; value: string; icon: IconName }[] = [
+  { label: 'Location', value: contactDetails.location, icon: 'mapPin' },
+  { label: 'Email', value: contactDetails.email, icon: 'mail' },
+  { label: 'Office Hours', value: contactDetails.hours, icon: 'clock' },
+]
 
 function Contact() {
   return (
@@ -20,20 +19,20 @@ function Contact() {
           <div>
             <SectionHeader
               eyebrow="Contact"
-              text="Use this section for office questions, enrollment follow-up, donation coordination, and room or program inquiries."
-              title="Reach the MAABC school office."
+              text="Have questions about admissions, programs, or ministry support? Send us a message or visit us on campus."
+              title="Reach the MAABCI School Office"
             />
             <dl className="mt-8 grid gap-4 rounded-2xl border border-slate-200/60 bg-gradient-to-br from-[#f7f8fb] to-white p-8 shadow-xl shadow-slate-950/[0.04]">
-              {Object.entries(contactDetails).map(([key, value]) => (
-                <div key={key} className="flex items-start gap-4">
+              {contactRows.map((row) => (
+                <div key={row.label} className="flex items-start gap-4">
                   <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-[#2020a0]/10 text-[#2020a0]">
-                    <Icon name={contactIcons[key] ?? 'pin'} className="h-5 w-5" />
+                    <Icon name={row.icon} className="h-5 w-5" />
                   </span>
                   <div>
                     <dt className="text-xs font-semibold uppercase tracking-[0.12em] text-[#2020a0]">
-                      {key.charAt(0).toUpperCase() + key.slice(1)}
+                      {row.label}
                     </dt>
-                    <dd className="mt-1 text-slate-700">{value}</dd>
+                    <dd className="mt-1 text-slate-700">{row.value}</dd>
                   </div>
                 </div>
               ))}

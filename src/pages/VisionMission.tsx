@@ -1,6 +1,9 @@
 import Icon from '../components/Icon'
 import SectionHeader from '../components/SectionHeader'
+import { mission, vision } from '../data/schoolContent'
 import { useRef, useState } from 'react'
+
+const praiseValues = ['Prayerfulness', 'Relationship', 'Accountability', 'Integrity', 'Submission', 'Excellence']
 
 function VisionMission() {
   const [rotation, setRotation] = useState({ x: 0, y: 0 })
@@ -97,8 +100,7 @@ function VisionMission() {
                   </h3>
                 </div>
                 <p className="text-base leading-relaxed text-white/85 group-hover:text-white/95 transition-colors duration-300">
-                  To nurture confident learners who grow in knowledge, character,
-                  service, and responsibility to their families and community.
+                  {vision}
                 </p>
               </div>
 
@@ -144,9 +146,7 @@ function VisionMission() {
                   </h3>
                 </div>
                 <p className="text-base leading-relaxed text-white/85 group-hover:text-white/95 transition-colors duration-300">
-                  To provide structured instruction, supportive faculty guidance,
-                  accessible facilities, and meaningful programs rooted in shared
-                  values and continuous improvement.
+                  {mission}
                 </p>
               </div>
 
@@ -179,11 +179,11 @@ function VisionMission() {
                     <Icon name="heart" className="h-5 w-5" />
                   </span>
                   <h3 className="text-2xl font-bold text-white/90 group-hover:scale-105 transition-transform duration-300">
-                    Core Values
+                    PRAISE Core Values
                   </h3>
                 </div>
                 <div className="flex flex-wrap gap-2">
-                  {['Faith', 'Excellence', 'Service', 'Integrity', 'Community'].map((value) => (
+                  {praiseValues.map((value) => (
                     <span
                       key={value}
                       className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm text-white/70 transition-all duration-300 group-hover:border-white/20 group-hover:bg-white/10 group-hover:text-white/90"

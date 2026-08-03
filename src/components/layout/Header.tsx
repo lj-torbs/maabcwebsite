@@ -43,7 +43,7 @@ function Header() {
           >
             <img
               src="/c5e2c9a4-e815-44c2-a04a-ea4fdf93ca98.png"
-              alt="MAABC Logo"
+              alt="MAABCI Logo"
               className="h-10 w-10 object-contain"
             />
           </div>

@@ -4,9 +4,9 @@ import SectionHeader from '../components/SectionHeader'
 import { donationFunds } from '../data/schoolContent'
 
 const icons: Record<string, IconName> = {
-  'Student support': 'graduation',
-  'Facility care': 'building',
-  'Programs and service': 'users',
+  'Student Support': 'graduation',
+  'Facility Care': 'building',
+  'Programs & Service': 'users',
 }
 
 function Donation() {
@@ -27,8 +27,8 @@ function Donation() {
           <SectionHeader
             eyebrow="Ministry Partner"
             light
-            text="Giving content is presented clearly so supporters can understand how their contribution strengthens school programs."
-            title="Support students, spaces, and service."
+            text="Your partnership helps us train faithful Christian leaders, maintain our facilities, and reach neighboring communities for Christ."
+            title="Support Students, Spaces, and Service"
           />
           <div className="group relative overflow-hidden rounded-2xl border border-white/15 bg-white/5 p-8 shadow-2xl shadow-black/20 backdrop-blur-sm transition-all duration-300 hover:bg-white/10 hover:border-white/25">
             <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-[#f0d030]/10 blur-3xl group-hover:scale-110 transition-transform duration-500" />
@@ -37,8 +37,8 @@ function Donation() {
                 <Icon name="heart" className="mr-2 inline h-5 w-5 align-[-0.2em]" /> Giving note
               </p>
               <p className="mt-4 text-sm leading-relaxed text-white/80">
-                Replace this placeholder with MAABC's official donation platform,
-                check instructions, Zelle details, or office contact process.
+                Reach out to our office to learn how to give — by check, bank
+                transfer, or in person — and how your gift will be used.
               </p>
               <a
                 className="group/btn mt-6 inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#f0c000] to-[#f0d030] px-6 py-3.5 text-sm font-semibold text-[#101080] shadow-xl shadow-[#f0c000]/25 transition-all duration-300 hover:shadow-2xl hover:shadow-[#f0c000]/40 hover:scale-[1.02] focus:outline-none focus:ring-4 focus:ring-[#f0d030]/50"

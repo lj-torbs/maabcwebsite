@@ -50,7 +50,7 @@ function Faculties() {
             Faculty and Staff
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-sm leading-6 text-slate-600">
-            MAABC faculty and staff serving across instruction, student support, and school operations.
+            Meet the faithful teachers and leaders who guide, mentor, and inspire our students every day.
           </p>
         </div>
 

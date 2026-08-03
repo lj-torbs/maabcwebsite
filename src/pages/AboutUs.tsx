@@ -1,13 +1,16 @@
 import InfoCard from '../components/InfoCard'
 import type { IconName } from '../components/Icon'
 import SectionHeader from '../components/SectionHeader'
-import { values } from '../data/schoolContent'
+import { aboutText, values } from '../data/schoolContent'
 import { useRef, useState } from 'react'
 
 const icons: Record<string, IconName> = {
-  'Faith-guided character': 'compass',
-  'Academic confidence': 'target',
-  'Family partnership': 'users',
+  'P - Prayerfulness': 'heart',
+  'R - Relationship': 'users',
+  'A - Accountability': 'target',
+  'I - Integrity': 'compass',
+  'S - Submission': 'flag',
+  'E - Excellence': 'graduation',
 }
 
 function AboutUs() {
@@ -36,8 +39,8 @@ function AboutUs() {
         <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
           <SectionHeader
             eyebrow="About us"
-            text="MAABC brings education, family involvement, and community service into one organized school experience."
-            title="A school community built around faith and service."
+            text="Founded in 1959, MAABCI is a Christ-centered educational institution in New Bulatukan, Makilala, North Cotabato."
+            title="About Mt. Apo Alliance Bible College"
           />
 
           {/* Interactive 3D Card */}
@@ -61,14 +64,7 @@ function AboutUs() {
               }}
             >
               <p className="relative text-lg leading-relaxed text-slate-800">
-                MAABC supports learners through clear instruction, student guidance,
-                school programs, and a campus culture shaped by service and shared
-                values.
-              </p>
-              <p className="relative mt-4 text-sm leading-relaxed text-slate-600 border-t border-[#f0c000]/20 pt-4">
-                Each page section is separated into its own React file so school
-                content can grow without turning the application into one large
-                component.
+                {aboutText}
               </p>
             </div>
 
