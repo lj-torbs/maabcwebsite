@@ -1,6 +1,7 @@
 import SectionHeader from '../components/SectionHeader'
 import Icon, { type IconName } from '../components/Icon'
 import ReportLinks from '../components/ReportLinks'
+import { publicAsset } from '../lib/publicAsset'
 
 const achievementStats = [
   { value: '1959', label: 'Founded in ministry education' },
@@ -57,7 +58,7 @@ function Achievements() {
         <div className="mt-12 grid overflow-hidden border border-slate-200 bg-[#f7f8fb] shadow-2xl shadow-slate-950/[0.08] lg:grid-cols-[0.95fr_1.05fr]">
           <div className="relative min-h-[420px]">
             <img
-              src="/Presidnt.jpg"
+              src={publicAsset('Presidnt.jpg')}
               alt="Dr. Ruel D. Invidiado - School President"
               className="absolute inset-0 h-full w-full object-cover object-top"
             />

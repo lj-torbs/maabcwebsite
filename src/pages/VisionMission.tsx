@@ -1,6 +1,7 @@
 import Icon from '../components/Icon'
 import SectionHeader from '../components/SectionHeader'
 import { mission, vision } from '../data/schoolContent'
+import { publicAsset } from '../lib/publicAsset'
 import { useRef, useState } from 'react'
 
 const praiseValues = ['Prayerfulness', 'Relationship', 'Accountability', 'Integrity', 'Submission', 'Excellence']
@@ -40,7 +41,7 @@ function VisionMission() {
       {/* Watermark logo */}
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.06] pointer-events-none">
         <img
-          src="/c5e2c9a4-e815-44c2-a04a-ea4fdf93ca98.png"
+          src={publicAsset('c5e2c9a4-e815-44c2-a04a-ea4fdf93ca98.png')}
           alt=""
           className="h-[600px] w-[600px] object-contain"
         />

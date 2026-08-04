@@ -1,3 +1,5 @@
+import { publicAsset } from '../lib/publicAsset'
+
 export type NavItem = {
   label: string
   href: string
@@ -37,11 +39,11 @@ export const navItems: NavItem[] = [
 export const reports: Report[] = [
   {
     title: 'July 2026 MAABCI President\'s Report',
-    href: '/July-2026-MAABC-Presidents-Report.pdf',
+    href: publicAsset('July-2026-MAABC-Presidents-Report.pdf'),
   },
   {
     title: 'April 2026 MAABCI President\'s Report',
-    href: '/April-2026-MAABC-Presidents-Report.pdf',
+    href: publicAsset('April-2026-MAABC-Presidents-Report.pdf'),
   },
 ]
 

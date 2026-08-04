@@ -1,5 +1,6 @@
 import InfoCard from '../components/InfoCard'
 import type { IconName } from '../components/Icon'
+import { publicAsset } from '../lib/publicAsset'
 import {
   academicPrograms,
   campusHighlights,
@@ -20,7 +21,7 @@ function Home() {
       >
         <div className="absolute inset-0 -z-20">
           <img
-            src="/Copy of DSC_1389.JPG"
+            src={publicAsset('Copy of DSC_1389.JPG')}
             alt="Students walking through a campus"
             className="h-full w-full scale-105 object-cover"
           />

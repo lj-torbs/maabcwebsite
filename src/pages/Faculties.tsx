@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { publicAsset } from '../lib/publicAsset'
 
 type FacultyProfile = {
   image: string
@@ -8,19 +9,19 @@ type FacultyProfile = {
 }
 
 const facultyProfiles: FacultyProfile[] = [
-  { image: '/faculties/DSC_8216.jpg', department: 'Academic Department', name: 'Faculty Member 01', designation: 'Instructor' },
-  { image: '/faculties/DSC_8243.jpg', department: 'Academic Department', name: 'Faculty Member 02', designation: 'Instructor' },
-  { image: '/faculties/DSC_8251.jpg', department: 'Student Formation', name: 'Faculty Member 03', designation: 'Program Staff' },
-  { image: '/faculties/DSC_8262.jpg', department: 'Academic Department', name: 'Faculty Member 04', designation: 'Instructor' },
-  { image: '/faculties/DSC_8270.jpg', department: 'School Administration', name: 'Faculty Member 05', designation: 'Administrative Staff' },
-  { image: '/faculties/DSC_8274.jpg', department: 'Academic Department', name: 'Faculty Member 06', designation: 'Instructor' },
-  { image: '/faculties/DSC_8277.jpg', department: 'Student Formation', name: 'Faculty Member 07', designation: 'Program Staff' },
-  { image: '/faculties/DSC_8281.jpg', department: 'Academic Department', name: 'Faculty Member 08', designation: 'Instructor' },
-  { image: '/faculties/DSC_8283.jpg', department: 'School Administration', name: 'Faculty Member 09', designation: 'Administrative Staff' },
-  { image: '/faculties/DSC_8300.JPG', department: 'Academic Department', name: 'Faculty Member 10', designation: 'Instructor' },
-  { image: '/faculties/DSC_8303.jpg', department: 'Academic Department', name: 'Faculty Member 11', designation: 'Instructor' },
-  { image: '/faculties/DSC_8316.JPG', department: 'Student Formation', name: 'Faculty Member 12', designation: 'Program Staff' },
-  { image: '/faculties/DSC_8319.jpg', department: 'Academic Department', name: 'Faculty Member 13', designation: 'Instructor' },
+  { image: publicAsset('faculties/DSC_8216.jpg'), department: 'Academic Department', name: 'Faculty Member 01', designation: 'Instructor' },
+  { image: publicAsset('faculties/DSC_8243.jpg'), department: 'Academic Department', name: 'Faculty Member 02', designation: 'Instructor' },
+  { image: publicAsset('faculties/DSC_8251.jpg'), department: 'Student Formation', name: 'Faculty Member 03', designation: 'Program Staff' },
+  { image: publicAsset('faculties/DSC_8262.jpg'), department: 'Academic Department', name: 'Faculty Member 04', designation: 'Instructor' },
+  { image: publicAsset('faculties/DSC_8270.jpg'), department: 'School Administration', name: 'Faculty Member 05', designation: 'Administrative Staff' },
+  { image: publicAsset('faculties/DSC_8274.jpg'), department: 'Academic Department', name: 'Faculty Member 06', designation: 'Instructor' },
+  { image: publicAsset('faculties/DSC_8277.jpg'), department: 'Student Formation', name: 'Faculty Member 07', designation: 'Program Staff' },
+  { image: publicAsset('faculties/DSC_8281.jpg'), department: 'Academic Department', name: 'Faculty Member 08', designation: 'Instructor' },
+  { image: publicAsset('faculties/DSC_8283.jpg'), department: 'School Administration', name: 'Faculty Member 09', designation: 'Administrative Staff' },
+  { image: publicAsset('faculties/DSC_8300.JPG'), department: 'Academic Department', name: 'Faculty Member 10', designation: 'Instructor' },
+  { image: publicAsset('faculties/DSC_8303.jpg'), department: 'Academic Department', name: 'Faculty Member 11', designation: 'Instructor' },
+  { image: publicAsset('faculties/DSC_8316.JPG'), department: 'Student Formation', name: 'Faculty Member 12', designation: 'Program Staff' },
+  { image: publicAsset('faculties/DSC_8319.jpg'), department: 'Academic Department', name: 'Faculty Member 13', designation: 'Instructor' },
 ]
 
 // Get unique departments for filter options

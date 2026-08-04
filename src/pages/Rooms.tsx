@@ -1,5 +1,6 @@
 import SectionHeader from '../components/SectionHeader'
 import { rooms } from '../data/schoolContent'
+import { publicAsset } from '../lib/publicAsset'
 
 const campusZones = [
   {
@@ -142,7 +143,7 @@ function Rooms() {
         <div className="mt-14 grid overflow-hidden border border-slate-200 bg-white shadow-2xl shadow-slate-950/[0.07] lg:grid-cols-[1.05fr_0.95fr]">
           <div className="relative min-h-[360px] lg:min-h-[520px]">
             <img
-              src="/Copy of DSC_1389.JPG"
+              src={publicAsset('Copy of DSC_1389.JPG')}
               alt="MAABCI campus walkway"
               className="absolute inset-0 h-full w-full object-cover"
             />
