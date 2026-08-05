@@ -21,7 +21,7 @@ function Home() {
       >
         <div className="absolute inset-0 -z-20">
           <img
-            src={publicAsset('Copy of DSC_1389.JPG')}
+            src={publicAsset('maabc.jpg')}
             alt="Students walking through a campus"
             className="h-full w-full scale-105 object-cover"
           />

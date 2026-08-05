@@ -32,7 +32,7 @@ function RequirementPanel({
   title: string
 }) {
   return (
-    <article className="border border-slate-200 bg-white p-6 shadow-sm">
+    <article className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
       <div className="flex items-start justify-between gap-4">
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#2020a0]">
@@ -72,7 +72,7 @@ function EnrollNow() {
 
           <div className="grid gap-4 md:grid-cols-3">
             {admissionsSteps.map((step, index) => (
-              <article className="border-l-4 border-[#2020a0] bg-white p-5 shadow-sm" key={step.title}>
+              <article className="rounded-xl border-l-4 border-[#2020a0] bg-white p-5 shadow-sm" key={step.title}>
                 <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-400">
                   Step {index + 1}
                 </p>
@@ -84,7 +84,7 @@ function EnrollNow() {
         </div>
 
         <div className="mt-12 grid gap-8 lg:grid-cols-[1.15fr_0.85fr]">
-          <form className="border border-slate-200 bg-white shadow-xl shadow-slate-950/[0.06]">
+          <form className="rounded-xl border border-slate-200 bg-white shadow-xl shadow-slate-950/[0.06]">
             <div className="border-b border-slate-200 px-6 py-6 sm:px-8">
               <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                 <div>
@@ -106,7 +106,7 @@ function EnrollNow() {
               <label className="block text-sm font-medium text-slate-700">
                 Parent / Guardian Name
                 <input
-                  className="mt-2 w-full border border-slate-300 bg-white px-4 py-3 text-sm text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-[#2020a0] focus:ring-4 focus:ring-[#2020a0]/10"
+                  className="rounded-xl mt-2 w-full border border-slate-300 bg-white px-4 py-3 text-sm text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-[#2020a0] focus:ring-4 focus:ring-[#2020a0]/10"
                   placeholder="Full name"
                   type="text"
                 />
@@ -114,7 +114,7 @@ function EnrollNow() {
               <label className="block text-sm font-medium text-slate-700">
                 Student Name
                 <input
-                  className="mt-2 w-full border border-slate-300 bg-white px-4 py-3 text-sm text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-[#2020a0] focus:ring-4 focus:ring-[#2020a0]/10"
+                  className="rounded-xl mt-2 w-full border border-slate-300 bg-white px-4 py-3 text-sm text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-[#2020a0] focus:ring-4 focus:ring-[#2020a0]/10"
                   placeholder="Full name"
                   type="text"
                 />
@@ -122,7 +122,7 @@ function EnrollNow() {
               <label className="block text-sm font-medium text-slate-700">
                 Email Address
                 <input
-                  className="mt-2 w-full border border-slate-300 bg-white px-4 py-3 text-sm text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-[#2020a0] focus:ring-4 focus:ring-[#2020a0]/10"
+                  className="rounded-xl mt-2 w-full border border-slate-300 bg-white px-4 py-3 text-sm text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-[#2020a0] focus:ring-4 focus:ring-[#2020a0]/10"
                   placeholder="parent@example.com"
                   type="email"
                 />
@@ -130,7 +130,7 @@ function EnrollNow() {
               <label className="block text-sm font-medium text-slate-700">
                 Contact Number
                 <input
-                  className="mt-2 w-full border border-slate-300 bg-white px-4 py-3 text-sm text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-[#2020a0] focus:ring-4 focus:ring-[#2020a0]/10"
+                  className="rounded-xl mt-2 w-full border border-slate-300 bg-white px-4 py-3 text-sm text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-[#2020a0] focus:ring-4 focus:ring-[#2020a0]/10"
                   placeholder="Phone number"
                   type="tel"
                 />
@@ -138,7 +138,7 @@ function EnrollNow() {
               <label className="block text-sm font-medium text-slate-700">
                 Student Type
                 <select
-                  className="mt-2 w-full border border-slate-300 bg-white px-4 py-3 text-sm text-slate-950 outline-none transition focus:border-[#2020a0] focus:ring-4 focus:ring-[#2020a0]/10"
+                  className="rounded-xl mt-2 w-full border border-slate-300 bg-white px-4 py-3 text-sm text-slate-950 outline-none transition focus:border-[#2020a0] focus:ring-4 focus:ring-[#2020a0]/10"
                   defaultValue=""
                 >
                   <option value="" disabled>
@@ -151,7 +151,7 @@ function EnrollNow() {
               <label className="block text-sm font-medium text-slate-700">
                 Program Interest
                 <select
-                  className="mt-2 w-full border border-slate-300 bg-white px-4 py-3 text-sm text-slate-950 outline-none transition focus:border-[#2020a0] focus:ring-4 focus:ring-[#2020a0]/10"
+                  className="rounded-xl mt-2 w-full border border-slate-300 bg-white px-4 py-3 text-sm text-slate-950 outline-none transition focus:border-[#2020a0] focus:ring-4 focus:ring-[#2020a0]/10"
                   defaultValue=""
                 >
                   <option value="" disabled>
@@ -165,7 +165,7 @@ function EnrollNow() {
               <label className="block text-sm font-medium text-slate-700 sm:col-span-2">
                 Message
                 <textarea
-                  className="mt-2 min-h-32 w-full border border-slate-300 bg-white px-4 py-3 text-sm text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-[#2020a0] focus:ring-4 focus:ring-[#2020a0]/10"
+                  className="rounded-xl mt-2 min-h-32 w-full border border-slate-300 bg-white px-4 py-3 text-sm text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-[#2020a0] focus:ring-4 focus:ring-[#2020a0]/10"
                   placeholder="Questions, preferred schedule, or other details."
                 />
               </label>
@@ -176,7 +176,7 @@ function EnrollNow() {
                 The form does not currently submit to a backend service.
               </p>
               <button
-                className="bg-[#101080] px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-[#101080]/20 transition hover:bg-[#2020a0] focus:outline-none focus:ring-4 focus:ring-[#2020a0]/25"
+                className="rounded-xl bg-[#101080] px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-[#101080]/20 transition hover:bg-[#2020a0] focus:outline-none focus:ring-4 focus:ring-[#2020a0]/25"
                 type="submit"
               >
                 Submit Inquiry
@@ -185,7 +185,7 @@ function EnrollNow() {
           </form>
 
           <aside className="grid gap-5">
-            <div className="border border-[#2020a0]/20 bg-[#101080] p-7 text-white shadow-xl shadow-[#101080]/15">
+            <div className="rounded-xl border border-[#2020a0]/20 bg-[#101080] p-7 text-white shadow-xl shadow-[#101080]/15">
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#f0d030]">
                 Before Applying
               </p>

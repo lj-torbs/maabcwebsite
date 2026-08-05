@@ -35,17 +35,11 @@ function Header() {
           onClick={() => setMenuOpen(false)}
           className="group flex items-center gap-4 rounded-xl focus:outline-none"
         >
-          <div
-            className={`flex h-15 w-15 items-center justify-center rounded-full transition-all duration-300 ${
-              scrolled
-                ? "bg-white shadow-lg"
-                : "bg-white/90 backdrop-blur-md shadow-xl"
-            }`}
-          >
+          <div className="flex h-15 w-15 items-center justify-center">
             <img
-              src={publicAsset('c5e2c9a4-e815-44c2-a04a-ea4fdf93ca98.png')}
+              src={publicAsset("c5e2c9a4-e815-44c2-a04a-ea4fdf93ca98.png")}
               alt="MAABCI Logo"
-              className="h-10 w-10 object-contain"
+              className="h-10 w-10 scale-150 object-contain"
             />
           </div>
 

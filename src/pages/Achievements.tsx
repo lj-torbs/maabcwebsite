@@ -46,7 +46,7 @@ function Achievements() {
         <div className="mt-14 grid gap-3 sm:grid-cols-3">
           {achievementStats.map((stat) => (
             <div
-              className="border border-slate-200 bg-[#f7f8fb] px-5 py-6 text-center"
+              className="rounded-xl border border-slate-200 bg-[#f7f8fb] px-5 py-6 text-center"
               key={stat.label}
             >
               <p className="text-3xl font-semibold text-[#101080] sm:text-4xl">{stat.value}</p>
@@ -55,7 +55,7 @@ function Achievements() {
           ))}
         </div>
 
-        <div className="mt-12 grid overflow-hidden border border-slate-200 bg-[#f7f8fb] shadow-2xl shadow-slate-950/[0.08] lg:grid-cols-[0.95fr_1.05fr]">
+        <div className="rounded-xl mt-12 grid overflow-hidden border border-slate-200 bg-[#f7f8fb] shadow-2xl shadow-slate-950/[0.08] lg:grid-cols-[0.95fr_1.05fr]">
           <div className="relative min-h-[420px]">
             <img
               src={publicAsset('Presidnt.jpg')}
@@ -98,32 +98,16 @@ function Achievements() {
         <div className="mt-16 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
           {achievementAreas.map((area) => (
             <article
-              className="group border border-slate-200 bg-white p-6 shadow-lg shadow-slate-950/[0.04] transition duration-300 hover:-translate-y-1 hover:border-[#2020a0]/30 hover:shadow-xl hover:shadow-[#2020a0]/10"
+              className="rounded-xl group border border-slate-200 bg-white p-6 shadow-lg shadow-slate-950/[0.04] transition duration-300 hover:-translate-y-1 hover:border-[#2020a0]/30 hover:shadow-xl hover:shadow-[#2020a0]/10"
               key={area.title}
             >
-              <span className="grid h-12 w-12 place-items-center bg-[#2020a0]/10 text-[#2020a0] transition duration-300 group-hover:bg-[#2020a0] group-hover:text-white">
+              <span className="rounded-full grid h-12 w-12 place-items-center bg-[#2020a0]/10 text-[#2020a0] transition duration-300 group-hover:bg-[#2020a0] group-hover:text-white">
                 <Icon name={area.icon} className="h-5 w-5" />
               </span>
               <h3 className="mt-5 text-lg font-semibold text-slate-950">{area.title}</h3>
               <p className="mt-3 text-sm leading-6 text-slate-600">{area.text}</p>
             </article>
           ))}
-        </div>
-
-        <div className="mt-16 grid gap-8 border-y border-slate-200 py-10 lg:grid-cols-[0.7fr_1.3fr] lg:items-center">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#2020a0]">
-              Next Highlights
-            </p>
-            <h3 className="mt-3 text-2xl font-semibold leading-tight text-slate-950 sm:text-3xl">
-              A section ready for verified awards, recognitions, and school milestones.
-            </h3>
-          </div>
-          <p className="text-sm leading-7 text-slate-600 sm:text-base">
-            This area avoids placeholder trophy claims while still giving the page a
-            polished achievements presence. Specific recognitions can be added here
-            once the school provides confirmed names, dates, photos, and award details.
-          </p>
         </div>
       </div>
     </section>

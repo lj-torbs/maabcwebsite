@@ -1,109 +1,168 @@
 import SectionHeader from '../components/SectionHeader'
-import { rooms } from '../data/schoolContent'
 import { publicAsset } from '../lib/publicAsset'
 
 const campusZones = [
   {
     title: 'Administration',
-    text: 'Leadership and support offices for school operations.',
-    count: '4 spaces',
-    image: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=80',
-    alt: 'Administrative office workspace',
+    text: 'Leadership, registrar, finance, guidance, and support offices for school operations.',
+    count: '9 spaces',
+    image: publicAsset('rooms/PRESIDENTS OFFICE 1.webp'),
+    alt: 'MAABCI President\'s Office',
   },
   {
     title: 'Learning & Worship',
-    text: 'Rooms dedicated to study, chapel life, and community gatherings.',
-    count: '4 spaces',
-    image: 'https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=900&q=80',
-    alt: 'Study space with bookshelves',
+    text: 'Rooms dedicated to instruction, chapel life, study, music, and community gatherings.',
+    count: '8 spaces',
+    image: publicAsset('rooms/LIBRARY 1.webp'),
+    alt: 'MAABCI library',
   },
   {
     title: 'Residential Life',
     text: 'Housing and cottages that support students, faculty, and families.',
     count: '4 spaces',
-    image: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=900&q=80',
-    alt: 'Residential room interior',
+    image: publicAsset('rooms/WOMENS DORM.webp'),
+    alt: 'MAABCI women\'s dormitory',
   },
 ] satisfies { title: string; text: string; count: string; image: string; alt: string }[]
 
-const roomPhotoFallback = {
-  src: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=900&q=80',
-  alt: 'Campus facility space',
+type RoomCard = {
+  name: string
+  purpose: string
+  image: string
+  alt: string
 }
 
-function getRoomPhoto(roomName: string) {
-  if (roomName.includes('President')) {
-    return {
-      src: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=900&q=80',
-      alt: 'Leadership meeting room',
-    }
-  }
-
-  if (roomName.includes('Academic')) {
-    return {
-      src: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=900&q=80',
-      alt: 'Academic office and books',
-    }
-  }
-
-  if (roomName.includes('Student')) {
-    return {
-      src: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=900&q=80',
-      alt: 'Students gathered together',
-    }
-  }
-
-  if (roomName.includes('General')) {
-    return {
-      src: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=80',
-      alt: 'Administrative planning workspace',
-    }
-  }
-
-  if (roomName.includes('Chapel')) {
-    return {
-      src: 'https://images.unsplash.com/photo-1507692049790-de58290a4334?auto=format&fit=crop&w=900&q=80',
-      alt: 'Chapel worship space',
-    }
-  }
-
-  if (roomName.includes('Classrooms')) {
-    return {
-      src: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=900&q=80',
-      alt: 'Classroom learning space',
-    }
-  }
-
-  if (roomName.includes('Gymnasium')) {
-    return {
-      src: 'https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=900&q=80',
-      alt: 'Indoor gymnasium court',
-    }
-  }
-
-  if (roomName.includes('Canteen')) {
-    return {
-      src: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=900&q=80',
-      alt: 'Campus dining area',
-    }
-  }
-
-  if (roomName.includes('Dormitory')) {
-    return {
-      src: 'https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&w=900&q=80',
-      alt: 'Student dormitory room',
-    }
-  }
-
-  if (roomName.includes('Cottages')) {
-    return {
-      src: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=900&q=80',
-      alt: 'Residential cottage room',
-    }
-  }
-
-  return roomPhotoFallback
-}
+const roomCards = [
+  {
+    name: 'President\'s Office',
+    purpose: 'The administrative office for school leadership and executive decisions.',
+    image: 'PRESIDENTS OFFICE 1.webp',
+    alt: 'MAABCI President\'s Office',
+  },
+  {
+    name: 'Department of Academic Affairs Office',
+    purpose: 'Handles academic programs, curriculum, and student scholastic records.',
+    image: 'academic-deans-office.webp',
+    alt: 'MAABCI academic dean\'s office',
+  },
+  {
+    name: 'Department of Student Affairs Office',
+    purpose: 'Manages student activities, guidance, and student life.',
+    image: 'OFFICE OF THE DEAN OF_.webp',
+    alt: 'MAABCI dean of student affairs office',
+  },
+  {
+    name: 'General Services Office',
+    purpose: 'Handles campus operations, maintenance, financial management, and daily administrative services.',
+    image: 'GENERAL SERVICES OFFICE.webp',
+    alt: 'MAABCI general services office',
+  },
+  {
+    name: 'Business Office',
+    purpose: 'Supports tuition payments, accounting, and campus financial transactions.',
+    image: 'business-office.webp',
+    alt: 'MAABCI business office',
+  },
+  {
+    name: 'Registrar\'s Office',
+    purpose: 'Assists with enrollment, records, transcripts, and official academic documents.',
+    image: 'REGISTRARS OFFICE.webp',
+    alt: 'MAABCI registrar\'s office',
+  },
+  {
+    name: 'Guidance Office',
+    purpose: 'Provides student guidance, counseling support, and personal development assistance.',
+    image: 'GUIDANCE OFFICE.webp',
+    alt: 'MAABCI guidance office',
+  },
+  {
+    name: 'Dean of Ladies Office',
+    purpose: 'Supports women students through mentoring, dorm life coordination, and campus care.',
+    image: 'dean-of-ladies-office.webp',
+    alt: 'MAABCI dean of ladies office',
+  },
+  {
+    name: 'Chapel',
+    purpose: 'The spiritual center of campus used for worship services, prayer gatherings, and fellowship.',
+    image: 'chapel.webp',
+    alt: 'MAABCI chapel',
+  },
+  {
+    name: 'Classrooms',
+    purpose: 'Dedicated spaces for daily instruction, group learning, and academic focus.',
+    image: 'classroom-1.webp',
+    alt: 'MAABCI classroom',
+  },
+  {
+    name: 'Gymnasium',
+    purpose: 'A multi-purpose venue for sports, school gatherings, and events.',
+    image: 'GYMNASIUM.webp',
+    alt: 'MAABCI gymnasium',
+  },
+  {
+    name: 'Library',
+    purpose: 'A quiet study and research space with learning resources for students and faculty.',
+    image: 'LIBRARY 1.webp',
+    alt: 'MAABCI library',
+  },
+  {
+    name: 'Music Room',
+    purpose: 'A dedicated area for music instruction, rehearsals, worship preparation, and practice.',
+    image: 'MUSIC ROOM.webp',
+    alt: 'MAABCI music room',
+  },
+  {
+    name: 'Life Formation Academy',
+    purpose: 'A formation and training space for character development, instruction, and ministry preparation.',
+    image: 'LIFE FORMATION ACADEMY.webp',
+    alt: 'MAABCI Life Formation Academy',
+  },
+  {
+    name: 'Stanita Hall',
+    purpose: 'A campus hall used for gatherings, activities, meetings, and shared community events.',
+    image: 'STANITA HALL 1.webp',
+    alt: 'MAABCI Stanita Hall',
+  },
+  {
+    name: 'Canteen',
+    purpose: 'Campus dining area providing meals and refreshments for students and staff.',
+    image: 'canteen.webp',
+    alt: 'MAABCI canteen',
+  },
+  {
+    name: 'Public CR',
+    purpose: 'Shared restroom facilities that support students, staff, and campus visitors.',
+    image: 'PUBLIC CR.webp',
+    alt: 'MAABCI public comfort room',
+  },
+  {
+    name: 'Men\'s Dormitory',
+    purpose: 'On-campus housing for male students.',
+    image: 'MENS DORM.webp',
+    alt: 'MAABCI men\'s dormitory',
+  },
+  {
+    name: 'Women\'s Dormitory',
+    purpose: 'On-campus housing for female students.',
+    image: 'WOMENS DORM.webp',
+    alt: 'MAABCI women\'s dormitory',
+  },
+  {
+    name: 'Faculty House',
+    purpose: 'On-campus living quarters for faculty members and teachers.',
+    image: 'faculty-house.webp',
+    alt: 'MAABCI faculty house',
+  },
+  {
+    name: 'Couples\' House',
+    purpose: 'Residential accommodations for married students and staff families.',
+    image: 'couples-house-newly-built.webp',
+    alt: 'MAABCI couples house',
+  },
+].map(({ image, ...room }) => ({
+  ...room,
+  image: publicAsset(`rooms/${image}`),
+})) satisfies RoomCard[]
 
 function Rooms() {
   return (
@@ -119,7 +178,7 @@ function Rooms() {
           <div className="grid gap-3 sm:grid-cols-3">
             {campusZones.map((zone) => (
               <article
-                className="overflow-hidden border border-slate-200 bg-white shadow-lg shadow-slate-950/[0.04]"
+                className="rounded-xl overflow-hidden border border-slate-200 bg-white shadow-lg shadow-slate-950/[0.04]"
                 key={zone.title}
               >
                 <img
@@ -140,7 +199,7 @@ function Rooms() {
           </div>
         </div>
 
-        <div className="mt-14 grid overflow-hidden border border-slate-200 bg-white shadow-2xl shadow-slate-950/[0.07] lg:grid-cols-[1.05fr_0.95fr]">
+        <div className="rounded-xl mt-14 grid overflow-hidden border border-slate-200 bg-white shadow-2xl shadow-slate-950/[0.07] lg:grid-cols-[1.05fr_0.95fr]">
           <div className="relative min-h-[360px] lg:min-h-[520px]">
             <img
               src={publicAsset('Copy of DSC_1389.JPG')}
@@ -172,11 +231,11 @@ function Rooms() {
             </p>
 
             <div className="mt-8 grid gap-3 sm:grid-cols-2">
-              <div className="border border-white/15 bg-white/5 p-5">
-                <p className="text-3xl font-semibold text-[#f0d030]">{rooms.length}</p>
+              <div className="rounded-xl border border-white/15 bg-white/5 p-5">
+                <p className="text-3xl font-semibold text-[#f0d030]">{roomCards.length}</p>
                 <p className="mt-1 text-sm text-white/75">listed campus spaces</p>
               </div>
-              <div className="border border-white/15 bg-white/5 p-5">
+              <div className="rounded-xl border border-white/15 bg-white/5 p-5">
                 <p className="text-3xl font-semibold text-[#f0d030]">1</p>
                 <p className="mt-1 text-sm text-white/75">shared campus community</p>
               </div>
@@ -185,35 +244,31 @@ function Rooms() {
         </div>
 
         <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {rooms.map((room, index) => {
-            const photo = getRoomPhoto(room.name)
-
-            return (
-              <article
-                className="group overflow-hidden border border-slate-200 bg-white shadow-lg shadow-slate-950/[0.04] transition duration-300 hover:-translate-y-1 hover:border-[#2020a0]/30 hover:shadow-xl hover:shadow-[#2020a0]/10"
-                key={room.name}
-              >
-                <div className="relative h-40 overflow-hidden bg-slate-100">
-                  <img
-                    src={photo.src}
-                    alt={photo.alt}
-                    className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0b0b60]/60 via-transparent to-transparent" />
-                  <span className="absolute bottom-4 right-4 bg-white px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-[#101080] shadow-lg shadow-black/10">
-                    {String(index + 1).padStart(2, '0')}
-                  </span>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-lg font-semibold leading-tight text-slate-950 transition-colors group-hover:text-[#2020a0]">
-                    {room.name}
-                  </h3>
-                  <p className="mt-4 text-sm leading-6 text-slate-600">{room.purpose}</p>
-                </div>
-              </article>
-            )
-          })}
+          {roomCards.map((room, index) => (
+            <article
+              className="rounded-xl group overflow-hidden border border-slate-200 bg-white shadow-lg shadow-slate-950/[0.04] transition duration-300 hover:-translate-y-1 hover:border-[#2020a0]/30 hover:shadow-xl hover:shadow-[#2020a0]/10"
+              key={room.name}
+            >
+              <div className="relative h-40 overflow-hidden bg-slate-100">
+                <img
+                  src={room.image}
+                  alt={room.alt}
+                  className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0b0b60]/60 via-transparent to-transparent" />
+                <span className="rounded-xl absolute bottom-4 right-4 bg-white px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-[#101080] shadow-lg shadow-black/10">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+              </div>
+              <div className="p-6">
+                <h3 className="text-lg font-semibold leading-tight text-slate-950 transition-colors group-hover:text-[#2020a0]">
+                  {room.name}
+                </h3>
+                <p className="mt-4 text-sm leading-6 text-slate-600">{room.purpose}</p>
+              </div>
+            </article>
+          ))}
         </div>
       </div>
     </section>
