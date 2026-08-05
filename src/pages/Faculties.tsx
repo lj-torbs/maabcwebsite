@@ -29,6 +29,7 @@ const departments = ['All', ...new Set(facultyProfiles.map(member => member.depa
 
 function Faculties() {
   const [selectedDepartment, setSelectedDepartment] = useState('All')
+  const [previewImage, setPreviewImage] = useState<{ src: string; alt: string } | null>(null)
 
   // Filter faculty based on selected department
   const filteredFaculty = selectedDepartment === 'All'
@@ -88,14 +89,19 @@ function Faculties() {
               key={president.image}
               style={{ animationDelay: '200ms' }}
             >
-              <div className="h-40 w-40 overflow-hidden rounded-full bg-slate-100 ring-2 ring-[#f0d030]/50 transition-all duration-300 group-hover:ring-[#2020a0]/30">
+              <button
+                aria-label={`Enlarge photo of ${president.name}`}
+                className="h-40 w-40 cursor-pointer overflow-hidden rounded-full bg-slate-100 ring-2 ring-[#f0d030]/50 transition-all duration-300 group-hover:ring-[#2020a0]/30"
+                onClick={() => setPreviewImage({ src: president.image, alt: president.name })}
+                type="button"
+              >
                 <img
                   alt={president.name}
                   className="h-full w-full object-cover object-top transition duration-500 group-hover:scale-105"
                   loading="lazy"
                   src={president.image}
                 />
-              </div>
+              </button>
               <div className="mt-3 w-full">
                 <p className="truncate text-xs font-semibold uppercase tracking-[0.08em] text-[#2020a0] sm:text-sm">
                   {president.department}
@@ -119,14 +125,19 @@ function Faculties() {
               key={member.image}
               style={{ animationDelay: `${260 + index * 45}ms` }}
             >
-              <div className="h-36 w-36 overflow-hidden rounded-full bg-slate-100 ring-2 ring-[#f0d030]/30 transition-all duration-300 group-hover:ring-[#2020a0]/30 sm:h-36 sm:w-36 md:h-40 md:w-40">
+              <button
+                aria-label={`Enlarge photo of ${member.name}`}
+                className="h-36 w-36 cursor-pointer overflow-hidden rounded-full bg-slate-100 ring-2 ring-[#f0d030]/30 transition-all duration-300 group-hover:ring-[#2020a0]/30 sm:h-36 sm:w-36 md:h-40 md:w-40"
+                onClick={() => setPreviewImage({ src: member.image, alt: member.name })}
+                type="button"
+              >
                 <img
                   alt={member.name}
                   className="h-full w-full object-cover object-top transition duration-500 group-hover:scale-105"
                   loading="lazy"
                   src={member.image}
                 />
-              </div>
+              </button>
               <div className="mt-3 w-full">
                 <p className="truncate text-xs font-semibold uppercase tracking-[0.08em] text-[#2020a0] sm:text-sm">
                   {member.department}
@@ -149,6 +160,30 @@ function Faculties() {
           </div>
         )}
       </div>
+
+      {previewImage && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 p-4"
+          onClick={() => setPreviewImage(null)}
+        >
+          <button
+            aria-label="Close enlarged photo"
+            className="absolute right-4 top-4 grid h-10 w-10 place-items-center rounded-full bg-white/10 text-white transition hover:bg-white/20 focus:outline-none focus:ring-4 focus:ring-white/25"
+            onClick={() => setPreviewImage(null)}
+            type="button"
+          >
+            <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path d="M6 6l12 12M18 6L6 18" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} />
+            </svg>
+          </button>
+          <img
+            alt={previewImage.alt}
+            className="max-h-[85vh] max-w-full rounded-lg object-contain shadow-2xl"
+            onClick={(event) => event.stopPropagation()}
+            src={previewImage.src}
+          />
+        </div>
+      )}
 
       <style>
         {`

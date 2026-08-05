@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import SectionHeader from '../components/SectionHeader'
 import { publicAsset } from '../lib/publicAsset'
 
@@ -165,6 +166,8 @@ const roomCards = [
 })) satisfies RoomCard[]
 
 function Rooms() {
+  const [previewImage, setPreviewImage] = useState<{ src: string; alt: string } | null>(null)
+
   return (
     <section className="overflow-hidden bg-gradient-to-b from-[#f7f8fb] to-white px-4 py-24 sm:px-6 lg:px-8" id="rooms">
       <div className="mx-auto max-w-7xl">
@@ -181,12 +184,19 @@ function Rooms() {
                 className="rounded-xl overflow-hidden border border-slate-200 bg-white shadow-lg shadow-slate-950/[0.04]"
                 key={zone.title}
               >
-                <img
-                  src={zone.image}
-                  alt={zone.alt}
-                  className="h-28 w-full object-cover"
-                  loading="lazy"
-                />
+                <button
+                  aria-label={`Enlarge photo of ${zone.title}`}
+                  className="block w-full cursor-pointer"
+                  onClick={() => setPreviewImage({ src: zone.image, alt: zone.alt })}
+                  type="button"
+                >
+                  <img
+                    src={zone.image}
+                    alt={zone.alt}
+                    className="h-28 w-full object-cover"
+                    loading="lazy"
+                  />
+                </button>
                 <div className="p-5">
                   <p className="text-sm font-semibold text-slate-950">{zone.title}</p>
                   <p className="mt-1 text-xs font-semibold uppercase tracking-[0.12em] text-[#2020a0]">
@@ -201,13 +211,25 @@ function Rooms() {
 
         <div className="rounded-xl mt-14 grid overflow-hidden border border-slate-200 bg-white shadow-2xl shadow-slate-950/[0.07] lg:grid-cols-[1.05fr_0.95fr]">
           <div className="relative min-h-[360px] lg:min-h-[520px]">
-            <img
-              src={publicAsset('Copy of DSC_1389.JPG')}
-              alt="MAABCI campus walkway"
-              className="absolute inset-0 h-full w-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0b0b60]/85 via-[#0b0b60]/20 to-transparent" />
-            <div className="absolute inset-x-0 bottom-0 p-7 text-white sm:p-9">
+            <button
+              aria-label="Enlarge photo of MAABCI campus walkway"
+              className="absolute inset-0 h-full w-full cursor-pointer"
+              onClick={() =>
+                setPreviewImage({
+                  src: publicAsset('Copy of DSC_1389.JPG'),
+                  alt: 'MAABCI campus walkway',
+                })
+              }
+              type="button"
+            >
+              <img
+                src={publicAsset('Copy of DSC_1389.JPG')}
+                alt="MAABCI campus walkway"
+                className="h-full w-full object-cover"
+              />
+            </button>
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0b0b60]/85 via-[#0b0b60]/20 to-transparent" />
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 p-7 text-white sm:p-9">
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#f0d030]">
                 Campus Life
               </p>
@@ -250,13 +272,20 @@ function Rooms() {
               key={room.name}
             >
               <div className="relative h-40 overflow-hidden bg-slate-100">
-                <img
-                  src={room.image}
-                  alt={room.alt}
-                  className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0b0b60]/60 via-transparent to-transparent" />
+                <button
+                  aria-label={`Enlarge photo of ${room.name}`}
+                  className="block h-full w-full cursor-pointer"
+                  onClick={() => setPreviewImage({ src: room.image, alt: room.alt })}
+                  type="button"
+                >
+                  <img
+                    src={room.image}
+                    alt={room.alt}
+                    className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                </button>
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0b0b60]/60 via-transparent to-transparent" />
                 <span className="rounded-xl absolute bottom-4 right-4 bg-white px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-[#101080] shadow-lg shadow-black/10">
                   {String(index + 1).padStart(2, '0')}
                 </span>
@@ -271,6 +300,30 @@ function Rooms() {
           ))}
         </div>
       </div>
+
+      {previewImage && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 p-4"
+          onClick={() => setPreviewImage(null)}
+        >
+          <button
+            aria-label="Close enlarged photo"
+            className="absolute right-4 top-4 grid h-10 w-10 place-items-center rounded-full bg-white/10 text-white transition hover:bg-white/20 focus:outline-none focus:ring-4 focus:ring-white/25"
+            onClick={() => setPreviewImage(null)}
+            type="button"
+          >
+            <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path d="M6 6l12 12M18 6L6 18" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} />
+            </svg>
+          </button>
+          <img
+            alt={previewImage.alt}
+            className="max-h-[85vh] max-w-full rounded-lg object-contain shadow-2xl"
+            onClick={(event) => event.stopPropagation()}
+            src={previewImage.src}
+          />
+        </div>
+      )}
     </section>
   )
 }

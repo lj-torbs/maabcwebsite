@@ -1,5 +1,14 @@
+import emailjs from '@emailjs/browser'
+import { useState, type FormEvent } from 'react'
 import SectionHeader from '../components/SectionHeader'
 import { admissionRequirements } from '../data/schoolContent'
+
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+
+// TODO: swap for the real admissions office address when ready
+const INQUIRY_RECIPIENT_EMAIL = 'maabc59@email.com'
 
 const admissionsSteps = [
   {
@@ -59,7 +68,37 @@ function RequirementPanel({
   )
 }
 
+type SubmitStatus = 'idle' | 'sending' | 'success' | 'error'
+
 function EnrollNow() {
+  const [status, setStatus] = useState<SubmitStatus>('idle')
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+
+    if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
+      console.error(
+        'EmailJS is not configured. Set VITE_EMAILJS_SERVICE_ID, VITE_EMAILJS_TEMPLATE_ID, and VITE_EMAILJS_PUBLIC_KEY in .env.local.',
+      )
+      setStatus('error')
+      return
+    }
+
+    const form = event.currentTarget
+    setStatus('sending')
+
+    try {
+      await emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, form, {
+        publicKey: EMAILJS_PUBLIC_KEY,
+      })
+      setStatus('success')
+      form.reset()
+    } catch (error) {
+      console.error('Failed to send inquiry email:', error)
+      setStatus('error')
+    }
+  }
+
   return (
     <section className="bg-[#f7f8fb] px-4 py-24 sm:px-6 lg:px-8" id="enroll-now">
       <div className="mx-auto max-w-7xl">
@@ -84,7 +123,10 @@ function EnrollNow() {
         </div>
 
         <div className="mt-12 grid gap-8 lg:grid-cols-[1.15fr_0.85fr]">
-          <form className="rounded-xl border border-slate-200 bg-white shadow-xl shadow-slate-950/[0.06]">
+          <form
+            className="rounded-xl border border-slate-200 bg-white shadow-xl shadow-slate-950/[0.06]"
+            onSubmit={handleSubmit}
+          >
             <div className="border-b border-slate-200 px-6 py-6 sm:px-8">
               <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                 <div>
@@ -103,11 +145,14 @@ function EnrollNow() {
             </div>
 
             <div className="grid gap-5 px-6 py-7 sm:grid-cols-2 sm:px-8">
+              <input name="to_email" type="hidden" value={INQUIRY_RECIPIENT_EMAIL} />
               <label className="block text-sm font-medium text-slate-700">
                 Parent / Guardian Name
                 <input
                   className="rounded-xl mt-2 w-full border border-slate-300 bg-white px-4 py-3 text-sm text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-[#2020a0] focus:ring-4 focus:ring-[#2020a0]/10"
+                  name="guardian_name"
                   placeholder="Full name"
+                  required
                   type="text"
                 />
               </label>
@@ -115,7 +160,9 @@ function EnrollNow() {
                 Student Name
                 <input
                   className="rounded-xl mt-2 w-full border border-slate-300 bg-white px-4 py-3 text-sm text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-[#2020a0] focus:ring-4 focus:ring-[#2020a0]/10"
+                  name="student_name"
                   placeholder="Full name"
+                  required
                   type="text"
                 />
               </label>
@@ -123,7 +170,9 @@ function EnrollNow() {
                 Email Address
                 <input
                   className="rounded-xl mt-2 w-full border border-slate-300 bg-white px-4 py-3 text-sm text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-[#2020a0] focus:ring-4 focus:ring-[#2020a0]/10"
-                  placeholder="parent@example.com"
+                  name="from_email"
+                  placeholder="name@example.com"
+                  required
                   type="email"
                 />
               </label>
@@ -131,6 +180,7 @@ function EnrollNow() {
                 Contact Number
                 <input
                   className="rounded-xl mt-2 w-full border border-slate-300 bg-white px-4 py-3 text-sm text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-[#2020a0] focus:ring-4 focus:ring-[#2020a0]/10"
+                  name="contact_number"
                   placeholder="Phone number"
                   type="tel"
                 />
@@ -140,6 +190,8 @@ function EnrollNow() {
                 <select
                   className="rounded-xl mt-2 w-full border border-slate-300 bg-white px-4 py-3 text-sm text-slate-950 outline-none transition focus:border-[#2020a0] focus:ring-4 focus:ring-[#2020a0]/10"
                   defaultValue=""
+                  name="student_type"
+                  required
                 >
                   <option value="" disabled>
                     Select student type
@@ -153,6 +205,8 @@ function EnrollNow() {
                 <select
                   className="rounded-xl mt-2 w-full border border-slate-300 bg-white px-4 py-3 text-sm text-slate-950 outline-none transition focus:border-[#2020a0] focus:ring-4 focus:ring-[#2020a0]/10"
                   defaultValue=""
+                  name="program_interest"
+                  required
                 >
                   <option value="" disabled>
                     Select a program
@@ -166,20 +220,16 @@ function EnrollNow() {
                 Message
                 <textarea
                   className="rounded-xl mt-2 min-h-32 w-full border border-slate-300 bg-white px-4 py-3 text-sm text-slate-950 outline-none transition placeholder:text-slate-400 focus:border-[#2020a0] focus:ring-4 focus:ring-[#2020a0]/10"
+                  name="message"
                   placeholder="Questions, preferred schedule, or other details."
                 />
               </label>
-            </div>
-
-            <div className="flex flex-col gap-4 border-t border-slate-200 bg-slate-50 px-6 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-8">
-              <p className="text-sm leading-6 text-slate-500">
-                The form does not currently submit to a backend service.
-              </p>
               <button
-                className="rounded-xl bg-[#101080] px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-[#101080]/20 transition hover:bg-[#2020a0] focus:outline-none focus:ring-4 focus:ring-[#2020a0]/25"
+                className="rounded-xl bg-[#101080] px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-[#101080]/20 transition hover:bg-[#2020a0] focus:outline-none focus:ring-4 focus:ring-[#2020a0]/25 disabled:cursor-not-allowed disabled:opacity-60"
+                disabled={status === 'sending'}
                 type="submit"
               >
-                Submit Inquiry
+                {status === 'sending' ? 'Sending...' : 'Submit Inquiry'}
               </button>
             </div>
           </form>
