@@ -8,7 +8,7 @@ const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
 const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
 
 // TODO: swap for the real admissions office address when ready
-const INQUIRY_RECIPIENT_EMAIL = 'maabc59@email.com'
+const INQUIRY_RECIPIENT_EMAIL = 'maabcregistrar1959@gmail.com'
 
 const admissionsSteps = [
   {

@@ -235,7 +235,7 @@ export const donationFunds: CardItem[] = [
 
 export const contactDetails = {
   location: 'New Bulatukan, Makilala, North Cotabato, Philippines',
-  email: 'maabc59@email.com',
+  email: 'maabcregistrar1959@gmail.com',
   hours: 'Monday – Friday (8:00 AM – 5:00 PM)',
   bank: 'PNB - 405810012854',
 }

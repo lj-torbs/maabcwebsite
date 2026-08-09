@@ -44,13 +44,13 @@ function Header() {
           </div>
 
           <div>
-            <h1
+            <p
               className={`text-xl font-bold tracking-tight transition-colors ${
                 scrolled ? "text-[#101080]" : "text-white"
               }`}
             >
               {schoolName}
-            </h1>
+            </p>
 
             <p
               className={`hidden xl:block text-xs uppercase tracking-[0.18em] transition-colors ${
