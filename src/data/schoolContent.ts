@@ -45,6 +45,14 @@ export const reports: Report[] = [
     title: 'April 2026 MAABCI President\'s Report',
     href: publicAsset('April-2026-MAABC-Presidents-Report.pdf'),
   },
+  {
+    title: 'MAABCI Brochure',
+    href: publicAsset('maabci brochure (3).pdf'),
+  },
+  {
+    title: 'PK Brochure',
+    href: publicAsset('pk brochure (1).pdf'),
+  },
 
 ]
 
@@ -237,7 +245,8 @@ export const contactDetails = {
   location: 'New Bulatukan, Makilala, North Cotabato, Philippines',
   email: 'maabcregistrar1959@gmail.com',
   hours: 'Monday – Friday (8:00 AM – 5:00 PM)',
-  bank: 'PNB - 405810012854',
+  bank: 'Metrobank: 337-3-33758477-3',
+  pnb: 'PNB - 405810012854'
 }
 
 export const socialLinks = [

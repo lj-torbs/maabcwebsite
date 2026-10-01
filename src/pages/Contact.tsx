@@ -11,8 +11,12 @@ const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
 const contactRows: { label: string; value: string; icon: IconName }[] = [
   { label: 'Location', value: contactDetails.location, icon: 'mapPin' },
   { label: 'Email', value: contactDetails.email, icon: 'mail' },
-  { label: 'MAABCI Bank Account:', value: contactDetails.bank, icon: 'building' },
-]
+  {
+    label: 'MAABCI Bank Account',
+    value: `${contactDetails.bank}\n${contactDetails.pnb}`,
+    icon: 'building',
+  },
+];
 
 type SubmitStatus = 'idle' | 'sending' | 'success' | 'error'
 
@@ -64,11 +68,15 @@ function Contact() {
                   <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-[#2020a0]/10 text-[#2020a0]">
                     <Icon name={row.icon} className="h-5 w-5" />
                   </span>
+
                   <div>
                     <dt className="text-xs font-semibold uppercase tracking-[0.12em] text-[#2020a0]">
                       {row.label}
                     </dt>
-                    <dd className="mt-1 text-slate-700">{row.value}</dd>
+
+                    <dd className="mt-1 whitespace-pre-line text-slate-700">
+                      {row.value}
+                    </dd>
                   </div>
                 </div>
               ))}
